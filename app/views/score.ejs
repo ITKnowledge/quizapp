@@ -1,0 +1,273 @@
+<% include header.ejs %>
+
+<script>
+ function setbarchar(team, data){
+
+   //Width and height
+    var w = 200;
+    var h = 100;
+    var barPadding = 30;
+    //Data
+    //console.log(data);
+    /*for(i=0; i<data.length; i++){
+      console.log(data[i].teamname);
+      console.log(data[i].Quiz);
+    }*/
+    var dataset = data.split(',');
+
+
+    //Create SVG element
+    var svg = d3.select(team)
+          .append("svg")
+          .attr("width", w)
+          .attr("height", h);
+
+    var bar = svg.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", function(d, i) {
+                  return i * (w / dataset.length);
+                })
+                .attr("y", function(d) {
+                  return h - (d * 5);  //Height minus data value
+                })
+                .attr("width", w / dataset.length - barPadding)
+                .attr("height", function(d){
+                  return d * 5;
+                })
+                .attr("fill", function(d) {
+                    if(d<5){
+                      return "red";
+                    }else if(d>5){
+                      return "blue";
+                    }
+                    //return "rgb(0, 0, " + (d * 100) + ")";
+                  });
+
+
+
+                svg.selectAll("text")
+                 .data(dataset)
+                 .enter()
+                 .append("text")
+                 .text(function(d) {
+                   return d;
+                 })
+                 .attr("x", function(d, i) {
+                   return i * (w / dataset.length) + ((w / dataset.length)-30)/2;
+                 })
+                 .attr("y", function(d) {
+                   return h - (d * 5) + 13;  //Height minus data value
+                 })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "12px")
+                 .attr("fill", "white");
+
+                 svg.selectAll("text")
+                  .data(dataset)
+                  .enter()
+                  .append("text")
+                  .text(function(d) {
+                    return d;
+                  })
+                  .attr("x", function(d, i) {
+                    return i * (w / dataset.length) + 40;
+                  })
+                  .attr("y", function(d) {
+                    return h - (d * 5) + 10;  //Height minus data value
+                  })
+                  .attr("font-family", "sans-serif")
+                  .attr("font-size", "12px")
+                  .attr("fill", "white");
+                  return '';
+           }
+          </script>
+
+<div class="row">
+<div class="col-md-12" style="height:10em">
+
+</div>
+</div>
+
+
+
+<div class="row">
+
+
+<div class="center-block col-md-4">
+
+</div>
+
+
+<div class="center-block col-md-4 well">
+
+    <h1 class="text-center page-header"><%= title %></h1>
+<table class="table table-condensed">
+  <tr>
+    <th>Team Name</th>
+    <th>IM Score</th>
+    <th>IS Score</th>
+  </tr>
+
+    <% for(i=0; i<score.length; i++){%>
+
+
+
+
+
+    <tr>
+      <td>
+        <%= score[i].teamname %>
+      </td>
+      <td>
+        <%= score[i].scoreIM %>/10
+      </td>
+      <td>
+        <%= score[i].scoreIS %>/11
+      </td>
+    </tr>
+
+
+
+
+      <%}%>
+  </table>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<div class="center-block col-md-4">
+<!--
+<button class="btn btn-primary" type="button" name="button">OK</button>
+
+-->
+</div>
+
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-md-1" id="team6">
+
+    <svg width="100" height="100">
+    <svg>
+  </div>
+<div class="col-md-2 center-block" id="team1">
+  <script>
+    document.write(setbarchar("#team1", '<%= team1 %>'));
+  </script>
+</div>
+
+<div class="col-md-2 center-block" id="team2">
+  <script>
+    document.write(setbarchar("#team2", '<%= team2 %>'));
+  </script>
+</div>
+
+<div class="col-md-2" id="team3">
+  <script>
+    document.write(setbarchar("#team3", '<%= team3 %>'));
+  </script>
+
+</div>
+
+<div class="col-md-2" id="team4">
+  <script>
+    document.write(setbarchar("#team4", '<%= team4 %>'));
+  </script>
+
+</div>
+
+<div class="col-md-2" id="team5">
+  <script>
+    document.write(setbarchar("#team5", '<%= team5 %>'));
+  </script>
+
+</div>
+
+<div class="col-md-1" id="team6">
+
+  <svg width="100" height="100">
+  <svg>
+</div>
+
+
+</div>
+<hr class="mine">
+<div class="row">
+  <div class="col-md-1 center-block">
+    <h4 class="text-center"></h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IM</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IS</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IM</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IS</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IM</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IS</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IM</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IS</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IM</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center">IS</h4>
+  </div>
+  <div class="col-md-1 center-block">
+    <h4 class="text-center"></h4>
+  </div>
+</div>
+<hr class="mine">
+<div class="row">
+  <div class="col-md-1 center-block">
+  <h3 class="text-center"></h3>
+  </div>
+  <div class="col-md-2 center-block">
+  <h3 class="text-center">Team 1</h3>
+  </div>
+  <div class="col-md-2 center-block">
+    <h3 class="text-center">Team 2</h3>
+  </div>
+  <div class="col-md-2 center-block">
+    <h3 class="text-center">Team 3</h3>
+  </div>
+  <div class="col-md-2 center-block">
+    <h3 class="text-center">Team 4</h3>
+  </div>
+  <div class="col-md-2 center-block">
+    <h3 class="text-center">Team 5</h3>
+  </div>
+  <div class="col-md-1 center-block">
+  <h3 class="text-center"></h3>
+  </div>
+</div>
+</div>
+
+
+
+<% include footer.ejs %>

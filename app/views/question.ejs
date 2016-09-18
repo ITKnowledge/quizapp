@@ -1,0 +1,21 @@
+<div class="well ht">
+  <div class="radio">
+
+  <h1><%= questions.data[0].qname %></h1>
+  <br />
+
+<p>
+  <%- questions.data[0].question %>
+</p>
+
+
+<% for(j=0; j< questions.data[0].choice.length; j++){%>
+
+          <label>
+              <input type="radio" value="<%= questions.data[0].choice[j] %>" id="question1" name="question1"> <%= questions.data[0].choice[j] %>
+          </label><br/>
+
+<%}%>
+
+</div>
+</div>

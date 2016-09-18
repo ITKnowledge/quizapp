@@ -1,0 +1,27 @@
+<% include header.ejs %>
+
+  <h1><%=team %></h1>
+  <p>Welcome to the Quiz</p>
+  <h2>Quiz : <%= questions.data[0].Quiz %></h2>
+  <form class="" action="/answer" method="post">
+
+
+    <% include question.ejs %>
+    <input readonly type="hidden" name="teamname" value="<%= team %>">
+    <input readonly type="hidden" name="qnum" value="<%= questions.data[0].qnum %>">
+    <input readonly type="hidden" name="answer" value="<%= questions.data[0].answer %>">
+    <input readonly type="hidden" name="limit" value="<%= limit %>">
+    <input readonly type="hidden" name="Quiz" value="<%= questions.data[0].Quiz %>">
+
+
+  <br />
+  <!--
+  <a type="submit" href="#" class="btn btn-success btn-lg">Submit</a>
+  -->
+  <button type="submit" class="btn btn-success btn-lg">Submit</button>
+
+  </form>
+  <!--
+  <a id="btn-next" href="/team1/<%= (questions.data[0].qnum == limit)?questions.data[0].qnum:questions.data[0].qnum + 1 %>" class="btn btn-success btn-lg pull-right">Next</a>
+
+  --><% include footer.ejs %>
