@@ -1,0 +1,5 @@
+{"_id":{"$oid":"57ddd13b9b2e788645d2c82b"},"teamname":"Team 1","answers":[]}
+{"_id":{"$oid":"57dde9929b2e788645d2c82c"},"teamname":"Team 2","answers":[]}
+{"_id":{"$oid":"57dde9a49b2e788645d2c82d"},"teamname":"Team 3","answers":[]}
+{"_id":{"$oid":"57de9eef9b2e788645d2c82e"},"teamname":"Team 4","answers":[]}
+{"_id":{"$oid":"57de9efc9b2e788645d2c82f"},"teamname":"Team 5","answers":[]}
