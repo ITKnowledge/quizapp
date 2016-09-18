@@ -1,8 +1,23 @@
 <% include header.ejs %>
+<script>
+var socket = io.connect('http://localhost:3000');
+socket.on('timer', function (data) {
+    $('#counter').html(data.countdown);
+});
+socket.on('message', function (data) {
+
+ $('#messages').text(data);
+ if(data === "go"){
+   window.location.replace("/end");
+ }
+
+
+});
+</script>
 
 <h1><%=team %></h1>
 <p>Welcome to the Quiz</p>
-<h2>Quiz : <%= questions.data[0].Quiz %></h2>
+<h2>Section: <%= questions.data[0].Quiz %></h2>
 
 <form class="" action="/answer" method="post">
 
@@ -13,6 +28,9 @@
   <input readonly type="hidden" name="answer" value="<%= questions.data[0].answer %>">
   <input readonly type="hidden" name="limit" value="<%= limit %>">
   <input readonly type="hidden" name="Quiz" value="<%= questions.data[0].Quiz %>">
+  <div class="hidden" id="messages">
+  </div>
+  <br>
 
 <br />
 <!--
