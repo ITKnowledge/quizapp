@@ -1,0 +1,8 @@
+mongoexport --db quizdb --collection questions --out db.questions.json
+mongoexport --db quizdb --collection teams --out db.teams.json
+
+
+
+
+mongoimport --db quizdb --collection questions --file db.questions.json
+mongoimport --db quizdb --collection teams --file db.teams.json
