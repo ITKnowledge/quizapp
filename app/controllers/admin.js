@@ -34,29 +34,29 @@ router.get('/', function(req, res){
       tt.push({teamname: team[i].teamname, scoreIM: scoreIM, scoreIS: scoreIS});
       switch (team[i].teamname) {
         case "Team 1":
-          console.log("team1");
+          //console.log("team1");
           team1 = [scoreIM, scoreIS];
-          console.log(team1);
+          //console.log(team1);
           break;
         case "Team 2":
-          console.log("team2");
+          //console.log("team2");
           team2 = [scoreIM, scoreIS];
-          console.log(team2);
+          //console.log(team2);
           break;
         case "Team 3":
-          console.log("team3");
+          //console.log("team3");
           team3 = [scoreIM, scoreIS];
-          console.log(team3);
+          //console.log(team3);
           break;
         case "Team 4":
-          console.log("team4");
+          //console.log("team4");
           team4 = [scoreIM, scoreIS];
-          console.log(team4);
+          //console.log(team4);
           break;
         case "Team 5":
-          console.log("team5");
+          //console.log("team5");
           team5 = [scoreIM, scoreIS];
-          console.log(team5);
+          //console.log(team5);
           break;
 
 

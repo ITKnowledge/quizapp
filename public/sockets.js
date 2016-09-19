@@ -18,13 +18,14 @@ exports.initialize = function(server) {
      return (new Array(length+1).join(pad)+string).slice(-length);
  }
 
- var countdown = 30;
+ var countdown = 1200;
  setInterval(function() {
    countdown--;
+   /*
    if(countdown == 0){
      io.sockets.emit('message', "go");
      countdown = 0;
-   }
+   }*/
    var minutes = Math.floor(countdown / 60);
    var seconds = countdown - minutes * 60;
    //var timer = minutes.toString() + ":" + seconds.toString();

@@ -4,6 +4,7 @@
 var bb = io.connect('http://localhost:3000');
 
 $(function(){
+
  $("#btn-send").click(function(){
     var tt = "go";
     //tt = $("#val3").val();
@@ -12,7 +13,9 @@ $(function(){
   $('#reset').click(function() {
       bb.emit('reset');
   });
-
+  bb.on('timer', function (data) {
+      $('#counter').html(data.countdown);
+  });
 
 });
 
@@ -62,6 +65,8 @@ $(function(){
                       return "red";
                     }else if(d>5){
                       return "blue";
+                    }else if(d == 5){
+                      return "green";
                     }
                     //return "rgb(0, 0, " + (d * 100) + ")";
                   });
@@ -82,25 +87,10 @@ $(function(){
                    return h - (d * 5) + 13;  //Height minus data value
                  })
                  .attr("font-family", "sans-serif")
-                 .attr("font-size", "12px")
+                 .attr("font-size", "15px")
                  .attr("fill", "white");
 
-                 svg.selectAll("text")
-                  .data(dataset)
-                  .enter()
-                  .append("text")
-                  .text(function(d) {
-                    return d;
-                  })
-                  .attr("x", function(d, i) {
-                    return i * (w / dataset.length) + 40;
-                  })
-                  .attr("y", function(d) {
-                    return h - (d * 5) + 10;  //Height minus data value
-                  })
-                  .attr("font-family", "sans-serif")
-                  .attr("font-size", "12px")
-                  .attr("fill", "white");
+
                   return '';
            }
           </script>
@@ -162,6 +152,7 @@ $(function(){
 
 
 <div class="pull-right">
+
   <button onclick="" id="btn-send" class="btn btn-info btn-xs">Stop Quiz</button>
   <button id="reset" class="btn btn-danger btn-xs">Reset Timer</button>
 </div>

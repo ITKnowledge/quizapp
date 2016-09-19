@@ -93,29 +93,55 @@ router.get('/team5/:qnum', function(req, res){
 
 router.post('/answer', function(req, res){
   Teams.findOne({teamname: req.body.teamname}, function(err, team){
-    var obj = {
-                qnum: req.body.qnum,
-                answer: req.body.question1,
-                score: (req.body.question1 == req.body.answer)?1:0,
-                Quiz: req.body.Quiz
-    }
-    team.answers.push(obj);
-    team.update({
-    answers: team.answers
-  }, function (err, teamID){
-    if(err){
-      console.log('GET Error: There was a problem retrieving: ' + err);
-      res.redirect('/');
-    }else{
-      var nextq = Number(req.body.qnum) + 1;
-      if (nextq > req.body.limit ){
-        res.redirect('/end');
-      }else{
-        res.redirect('/'+req.body.teamname.split(' ').join('')+'/'+ nextq);
-      }
+    /*var count = 0;
+    for(i=0; i<team.answers.length; i++){
+      count = count + 1;
+      console.log(count);
+      console.log(team.answers.length);
+    }*/
 
+
+    if(req.body.qnum == (team.answers.length + 1) ){
+
+      //--------------------------------------------------------------------
+
+        var obj = {
+                    qnum: req.body.qnum,
+                    answer: req.body.question1,
+                    score: (req.body.question1 == req.body.answer)?1:0,
+                    Quiz: req.body.Quiz
+        }
+        team.answers.push(obj);
+        team.update({
+        answers: team.answers
+      }, function (err, teamID){
+        if(err){
+          console.log('GET Error: There was a problem retrieving: ' + err);
+          res.redirect('/');
+        }else{
+          var nextq = Number(req.body.qnum) + 1;
+          if (nextq > req.body.limit ){
+            res.redirect('/end');
+          }else{
+            res.redirect('/'+req.body.teamname.split(' ').join('')+'/'+ nextq);
+          }
+
+        }
+      })
+      //----------------------------------------------------------------------
+  }else{
+    //------------------------------------------------------------------------
+    
+    var nextq = Number(team.answers.length) + 1;
+    if (nextq > req.body.limit ){
+      res.redirect('/end');
+    }else{
+    res.redirect('/'+req.body.teamname.split(' ').join('')+'/'+ nextq);
+    //console.log("jump : " + count);
     }
-  })
+    //------------------------------------------------------------------------
+    }
+
 
   })
 
