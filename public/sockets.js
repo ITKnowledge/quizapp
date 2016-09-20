@@ -36,7 +36,7 @@ exports.initialize = function(server) {
 
  io.sockets.on('connection', function (socket) {
    socket.on('reset', function (data) {
-     countdown = 1000;
+     countdown = 1200;
 
      var minutes = Math.floor(countdown / 60);
      var seconds = countdown - minutes * 60;
