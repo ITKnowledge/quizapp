@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'q-a'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 80,
     db: 'mongodb://localhost/quizdb'
   },
 
@@ -17,7 +17,7 @@ var config = {
     app: {
       name: 'q-a'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 80,
     db: 'mongodb://localhost/quizdb'
   },
 
@@ -26,7 +26,7 @@ var config = {
     app: {
       name: 'q-a'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 80,
     db: 'mongodb://localhost/quizdb'
   }
 };
